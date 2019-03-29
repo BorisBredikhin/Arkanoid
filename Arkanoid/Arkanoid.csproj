@@ -46,8 +46,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Ball.cs" />
+    <Compile Include="Model\Brick.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\ICollidable.cs" />
     <Compile Include="Model\IGameObject.cs" />
     <Compile Include="Model\IMovingObject.cs" />
     <Compile Include="Model\Scene.cs" />

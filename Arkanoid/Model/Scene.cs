@@ -14,6 +14,12 @@ namespace Arkanoid.Model
             set => _scene[x, y] = value;
         }
 
+        public IGameObject this[Point point]
+        {
+            get => _scene[point.X, point.Y];
+            set => _scene[point.X, point.Y] = value;
+        }
+
         public Scene(Size sceneSize)
         {
             SceneSize = sceneSize;
