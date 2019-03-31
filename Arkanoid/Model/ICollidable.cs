@@ -2,6 +2,6 @@
 {
     interface ICollidable
     {
-        void Collide(IMovingObject movingObject);
+        void Collide(IGameObject movingObject);
     }
 }

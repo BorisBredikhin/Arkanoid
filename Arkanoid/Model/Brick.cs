@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace Arkanoid.Model
 {
@@ -18,6 +17,6 @@ namespace Arkanoid.Model
 
         public abstract void Dispose();
 
-        public abstract void Collide(IMovingObject movingObject);
+        public abstract void Collide(IGameObject movingObject);
     }
 }
