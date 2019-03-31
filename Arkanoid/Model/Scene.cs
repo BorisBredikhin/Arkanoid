@@ -14,15 +14,15 @@ namespace Arkanoid.Model
             set => _scene[x, y] = value;
         }
 
-        public IGameObject this[Point point]
+        public IGameObject this[Vector point]
         {
             get => _scene[point.X, point.Y];
             set => _scene[point.X, point.Y] = value;
         }
 
-        public Scene(Size sceneSize)
+        public Scene(Game game)
         {
-            SceneSize = sceneSize;
+            SceneSize = game.GameAreaSize;
             _scene = new IGameObject[SceneSize.Width, SceneSize.Height];
         }
 

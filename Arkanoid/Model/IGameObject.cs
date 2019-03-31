@@ -6,7 +6,7 @@ namespace Arkanoid.Model
     public interface IGameObject: IDisposable
     {
         Size Size { get; }
-        Point Position { get; set; }
+        Vector Position { get; set; }
         Scene Scene { get; }
     }
 }

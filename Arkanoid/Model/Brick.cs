@@ -5,10 +5,10 @@ namespace Arkanoid.Model
     public abstract class Brick:IGameObject, ICollidable
     {
         public Size Size { get; } = new Size(2,1);
-        public Point Position { get; set; }
+        public Vector Position { get; set; }
         public Scene Scene { get; }
 
-        public Brick(Scene scene, Point position)
+        public Brick(Scene scene, Vector position)
         {
             Position = position;
             Scene = scene;
@@ -17,6 +17,6 @@ namespace Arkanoid.Model
 
         public abstract void Dispose();
 
-        public abstract void Collide(IGameObject movingObject);
+        public abstract void Collide(IGameObject anotherGameObject);
     }
 }

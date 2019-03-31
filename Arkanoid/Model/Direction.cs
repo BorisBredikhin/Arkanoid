@@ -27,6 +27,11 @@ namespace Arkanoid.Model
         {
         }
 
+        public Direction(Vector vector) : this(vector.X, vector.Y)
+        {
+            ;
+        }
+
         public static Direction GetDirectionAfterCollision(Direction objectDirection, Direction collisionDirection)
         {
             if (collisionDirection.X != 0)
