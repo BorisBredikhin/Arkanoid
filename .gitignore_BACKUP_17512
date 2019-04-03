@@ -1,0 +1,10 @@
+.vs/
+Arkanoid/obj/
+Model/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Model/obj/
+*.lyx~
+<<<<<<< HEAD
+=======
+packages/
+Arkanoid/bin/
+>>>>>>> feature/GameObjects
