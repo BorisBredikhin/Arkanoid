@@ -3,3 +3,5 @@ Arkanoid/obj/
 Model/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Model/obj/
 *.lyx~
+packages/
+Arkanoid/bin/
