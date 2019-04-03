@@ -49,6 +49,6 @@ namespace Arkanoid.Model
             return X == anotherDirection.X && Y == anotherDirection.Y;
         }
 
-        public override int GetHashCode() => 2 * X + 2 * Y;
+        public override int GetHashCode() => (int) (2 * X + 2 * Y);
     }
 }

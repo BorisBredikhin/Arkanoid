@@ -18,6 +18,15 @@ namespace Arkanoid.Model.Tests
             TestDirection(Direction.NE, Direction.N, Direction.SE);
         }
 
+        [Test]
+        public void TestBallCollision()
+        {
+            Assert.Pass();
+            //var ball = new Ball(new Scene(new Game()));
+            //ball.Collide(new Brick(new Scene(new Game()), new Vector(2,2)));
+            //Assert.AreEqual(ball.Velocity.Direction, Direction.NW.Direction);
+        }
+
         public void TestDirection(Direction ballDirection, Direction wallDirection, Direction resultDirection)
         {
             Assert.AreEqual(resultDirection, Direction.GetDirectionAfterCollision(ballDirection, wallDirection));

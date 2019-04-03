@@ -8,6 +8,8 @@ namespace Arkanoid.Model
         public Ball(Scene scene)
         {
             Scene = scene;
+            Position = new Vector(Scene.SceneSize.Width/2, Scene.SceneSize.Height/2);
+            Velocity = new Vector(1,1);
         }
 
         public void Dispose()
@@ -19,18 +21,22 @@ namespace Arkanoid.Model
         public Vector Position { get; set; }
         public Scene Scene { get; }
         public Vector Velocity { get; set; }
-        public void Move(Direction direction)
+        public void Move(Direction direction = null)
         {
-
+            Position += Velocity;
         }
 
         //TODO: Test it
         public void Collide(IGameObject anotherGameObject)
         {
+            var collisionDirection = new Direction(2*anotherGameObject.Position - Velocity);
             if (anotherGameObject is Brick)
             {
-                Velocity = Direction.GetDirectionAfterCollision(new Direction(Velocity),
-                    new Direction(anotherGameObject.Position - Velocity));
+                var delta = new Vector(-Velocity.Y/collisionDirection.X, -Velocity.X/collisionDirection.Y);
+                if (Scene[Position + delta] == null)
+                    Velocity = delta;
+                else
+                    Velocity = -1 * delta;
             }
         }
     }
