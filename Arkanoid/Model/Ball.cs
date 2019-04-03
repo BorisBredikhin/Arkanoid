@@ -26,7 +26,6 @@ namespace Arkanoid.Model
             Position += Velocity;
         }
 
-        //TODO: Test it
         public void Collide(IGameObject anotherGameObject)
         {
             var collisionDirection = new Direction(2*anotherGameObject.Position - Velocity);
