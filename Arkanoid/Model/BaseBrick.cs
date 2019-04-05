@@ -13,6 +13,10 @@
 
         public override void Collide(IGameObject anotherGameObject)
         {
+            if (anotherGameObject is Ball)
+            {
+                return;
+            }
             if (anotherGameObject is ICollidable collidable)
                 collidable.Collide(this);
         }

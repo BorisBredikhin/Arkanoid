@@ -6,6 +6,6 @@ namespace Arkanoid.Model
     {
         Vector Velocity { get; set; }
 
-        void Move(Direction direction);
+        void Move(Direction direction, int fps);
     }
 }
