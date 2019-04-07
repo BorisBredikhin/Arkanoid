@@ -6,6 +6,8 @@ namespace Arkanoid.Model
     {
         public Size SceneSize { get; set; }
         public Ball Ball;
+        public Paddle Paddle { get; set; }
+        public double Speed { get; set; }
 
         private readonly Game _game;
         private readonly IGameObject[,] _scene;
@@ -22,8 +24,9 @@ namespace Arkanoid.Model
             set => _scene[point.X, point.Y] = value;
         }
 
-        public Scene(Game game)
+        public Scene(Game game, double speed = 1.0)
         {
+            Speed = speed;
             _game = game;
             SceneSize = game.GameAreaSize;
             _scene = new IGameObject[SceneSize.Width, SceneSize.Height];
@@ -40,6 +43,8 @@ namespace Arkanoid.Model
                 _scene[0, i] = new BaseBrick(this, new Vector(0, i));
                 _scene[SceneSize.Width-1, i] = new BaseBrick(this, new Vector(SceneSize.Width-1, i));
             }
+
+            Paddle = new Paddle(this);
         }
 
         public void GameOver()

@@ -52,8 +52,8 @@ namespace Arkanoid.Model
             {
 
                 var prep = Position;
-                PositionF = new PointF(PositionF.X + (float) (Velocity.X * (100.0 / fps)),
-                    PositionF.Y + (float) (Velocity.Y * (100.0 / fps)));
+                PositionF = new PointF(PositionF.X + (float) (Velocity.X * (Scene.Speed*100.0 / fps)),
+                    PositionF.Y + (float) (Velocity.Y * (Scene.Speed*100.0 / fps)));
                 return;
             }
 
