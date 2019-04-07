@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace Arkanoid.Model
+﻿namespace Arkanoid.Model
 {
     public interface IMovingObject: IGameObject
     {
