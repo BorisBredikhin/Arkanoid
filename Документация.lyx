@@ -98,6 +98,10 @@ Arkanoid
 Объекты игры
 \end_layout
 
+\begin_layout Standard
+У всех объектов центр в UL-углу
+\end_layout
+
 \begin_layout Section
 Scene
 \end_layout

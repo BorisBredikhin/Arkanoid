@@ -8,5 +8,6 @@ namespace Arkanoid.Model
         Size Size { get; }
         Vector Position { get; set; }
         Scene Scene { get; }
+        PointF PositionF { get; set; }
     }
 }

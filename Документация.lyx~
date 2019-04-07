@@ -102,8 +102,20 @@ Arkanoid
 Scene
 \end_layout
 
+\begin_layout Standard
+ARKANOID-10
+\end_layout
+
 \begin_layout Section
 Ball
+\end_layout
+
+\begin_layout Standard
+ARKANOID-5
+\end_layout
+
+\begin_layout Standard
+ARKANOID-12
 \end_layout
 
 \begin_layout Section
