@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,16 +14,25 @@ namespace Arkanoid
 
         private Ball _ball;
         private Paddle _paddle;
-
+        
         private Brush _baseBrickBrush,
             _balllBrush,
             _paddleBrush;
+
+        private InfoPanel _infoPanel;
 
         public MainForm()
         {
             InitializeComponent();
             _baseBrickBrush = new SolidBrush(Color.Green);
-            Size = new Size((Game.GameAreaSize.Width+1)*Unit, (Game.GameAreaSize.Height+2)*Unit+50);
+
+            var gameWidth = (Game.GameAreaSize.Width+1)*Unit;
+            var gameHeight = (Game.GameAreaSize.Height+2)*Unit+50;
+
+            _infoPanel = new InfoPanel(gameWidth, gameHeight, Game);
+
+            Size = new Size(gameWidth+_infoPanel.Width, gameHeight);
+
 
             _ball = new Ball(Game.Scene);
             _ball.PositionF = new PointF(Unit*_ball.Position.X, Unit*_ball.Position.Y);
@@ -31,6 +41,8 @@ namespace Arkanoid
 
             _paddle = Game.Scene.Paddle;
             _paddleBrush = new SolidBrush(Color.Orange);
+
+            Controls.Add(_infoPanel);
 
             Timer.Start();
         }
@@ -84,20 +96,22 @@ namespace Arkanoid
             graphics.FillEllipse(_balllBrush, _ball.PositionF.X, _ball.PositionF.Y, Unit, Unit);
         }
 
-        private void Timer_Tick(object sender, System.EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
+            _infoPanel.OnTick(sender, e);
             if (Game.IsOver)
             {
                 Timer.Stop();
                 return;
             }
-            _ball.Move(null,Game.FPS);
-            if (Game.IsOver)
-            {
-                Timer.Stop();
-                return;
-            }
+            //_infoPanel.OnTick(sender, e);
+            //if (Game.IsOver)
+            //{
+            //    Timer.Stop();
+            //    return;
+            //}
             _paddle.Collide();
+            _ball.Move(null, Game.FPS);
 
             DrawGame();
         }
