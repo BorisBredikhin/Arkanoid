@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Arkanoid.Model;
@@ -17,7 +18,8 @@ namespace Arkanoid
         
         private Brush _baseBrickBrush,
             _balllBrush,
-            _paddleBrush;
+            _paddleBrush,
+            _simpleBrickBrush;
 
         private InfoPanel _infoPanel;
 
@@ -25,6 +27,7 @@ namespace Arkanoid
         {
             InitializeComponent();
             _baseBrickBrush = new SolidBrush(Color.Green);
+            _simpleBrickBrush = new SolidBrush(Color.Blue);
 
             var gameWidth = (Game.GameAreaSize.Width+1)*Unit;
             var gameHeight = (Game.GameAreaSize.Height+2)*Unit+50;
@@ -85,11 +88,18 @@ namespace Arkanoid
                     {
                         rectangles.Add((RectType.BaseBrick, new Rectangle(i * Unit, j * Unit, Unit, Unit)));
                     }
+                    if (cell is SimpleBrick)
+                    {
+                        rectangles.Add((RectType.SimpleBrick, new Rectangle(i * Unit, j * Unit, Unit, Unit)));
+                    }
                 }
             }
 
             graphics.FillRectangles(_baseBrickBrush,
                 rectangles.Where(r => r.Item1 == RectType.BaseBrick).Select(r => r.Item2).ToArray());
+
+            graphics.FillRectangles(_simpleBrickBrush,
+                rectangles.Where(r => r.Item1 == RectType.SimpleBrick).Select(r => r.Item2).ToArray());
 
             graphics.FillRectangle(_paddleBrush, _paddle.PositionF.X, _paddle.PositionF.Y, Unit*_paddle.Size.Width, Unit*_paddle.Size.Height);
 

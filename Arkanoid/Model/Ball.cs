@@ -5,6 +5,7 @@ namespace Arkanoid.Model
     public class Ball: IMovingObject, ICollidable
     {
         private PointF _positionF;
+        private long time = 0;
 
         public Ball(Scene scene)
         {
@@ -48,44 +49,45 @@ namespace Arkanoid.Model
           }
 
             var gameObject = Scene[Position + new Vector(x,y)];
-            if (gameObject == null)
-            {
+            Collide(gameObject);
 
+            //if (gameObject == null)
+            {
+                time++;
                 var prep = Position;
                 PositionF = new PointF(PositionF.X + (float) (Velocity.X * (Scene.Speed*100.0 / fps)),
                     PositionF.Y + (float) (Velocity.Y * (Scene.Speed*100.0 / fps)));
-                return;
+               // return;
             }
 
-            Collide(gameObject);
-             
         }
 
         public void Collide(IGameObject anotherGameObject)
         {
            if (anotherGameObject == null)
                 return;
-            var collisionDirection = new Direction(2*anotherGameObject.Position - Velocity);
+           // var collisionDirection = new Direction(2*anotherGameObject.Position - Velocity);
             if (anotherGameObject is Brick)
             {
-                var delta = new Vector(-1/Velocity.X, 1/Velocity.Y);
-                var t = Position + delta;
-                if (t.X > 0 && t.Y > 0 && t.X < Scene.SceneSize.Width && t.Y < Scene.SceneSize.Height)
-                {
-
-                    if (Scene[Position + delta] == null)
-                        Velocity = delta;
-                    return;
-                }
-               t = Position - delta;
-                if (t.X > 0 && t.Y > 0 && t.X < Scene.SceneSize.Width && t.Y < Scene.SceneSize.Height)
-                {
-
-                    if (Scene[Position - delta] == null)
-                        Velocity = -1 * delta;
-                    
-                }
+                Velocity.X *= -1;
+                if (Scene.InBounds(Position + Velocity) &&Scene[Position + Velocity] == null)
+                    goto collision;
+                Velocity.X *= -1;
+                Velocity.Y *= -1;
+                if (Scene.InBounds(Position + Velocity) && Scene[Position + Velocity] == null)
+                    goto collision;
+                Velocity.X *= -1;
+                if (Scene.InBounds(Position + Velocity) && Scene[Position + Velocity] == null)
+                    goto collision;
             }
+            collision:
+            if (anotherGameObject is ICollidable collidable)
+                {
+                    collidable.Collide(this);
+                }
+
+            //Position += Velocity;
+        }
+
         }
     }
-}

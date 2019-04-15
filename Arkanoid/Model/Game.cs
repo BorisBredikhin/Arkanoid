@@ -14,7 +14,7 @@ namespace Arkanoid.Model
         public Game()
         {
             GameAreaSize = new Size(22, 30);
-            Scene = new Scene(this, 2);
+            Scene = new Scene(this, 1, 1);
             Score = 0;
         }
     }

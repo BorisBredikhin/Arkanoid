@@ -2,6 +2,7 @@
 {
     public enum RectType
     {
-        BaseBrick
+        BaseBrick,
+        SimpleBrick
     }
 }

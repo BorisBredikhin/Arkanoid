@@ -20,5 +20,7 @@
             if (anotherGameObject is ICollidable collidable)
                 collidable.Collide(this);
         }
+
+        public override string ToString() => "B";
     }
 }
