@@ -1,4 +1,6 @@
-﻿namespace Arkanoid.Model
+﻿using System;
+
+namespace Arkanoid.Model
 {
     public class SimpleBrick: BaseBrick
     {
@@ -15,6 +17,12 @@
             {
                 Scene.Game.Score++;
                 Scene[Position] = null;
+                if (Scene[Position.X - 1, Position.Y] is SimpleBrick)
+                    Scene[Position.X - 1, Position.Y] = null;
+                if (Scene[Position.X + 1, Position.Y] is SimpleBrick)
+                    Scene[Position.X + 1, Position.Y] = null;
+
+                Console.WriteLine(Scene);
                 return;
             }
             //base.Collide(anotherGameObject);

@@ -8,25 +8,57 @@ namespace Arkanoid
 {
     public class InfoPanel : Panel
     {
-        private Game _game;
-        private Label _scoreLabel,
-            _gameOverLabel;
+        private readonly Game _game;
+        private readonly MainForm _mainForm;
 
-        public InfoPanel(int gameWidth, int gameHeight, Game game)
+        private readonly Label _scoreLabel;
+
+        private Label _gameOverLabel;
+
+        private readonly Label _controlButton;
+
+        public InfoPanel(int gameWidth, int gameHeight, Game game,
+            MainForm mainForm)
         {
             Location = new Point(gameWidth, 0);
             Size = new Size(300, gameHeight);
 
             _game = game;
+            _mainForm = mainForm;
+            _controlButton = new Label()
+            {
+                Width = Size.Width,
+                Text = Resources.NewGame,
+                Top = 30,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Padding = new Padding(5),
+                BorderStyle = BorderStyle.Fixed3D,
+            };
+
+            _controlButton.Click+= ChangeGameState;
 
             _scoreLabel = new Label {Font = new Font(FontFamily.GenericSerif, 18.0f)};
             UpdateScore();
             Controls.Add(_scoreLabel);
+            Controls.Add(_controlButton);
+        }
+
+        private void ChangeGameState(object sender, EventArgs e)
+        {
+            if (_controlButton.Text == Resources.NewGame)
+            {
+                _game.Scene = new Scene(_game,1);
+                _mainForm.Ball = new Ball(_game.Scene);
+                _game.Scene.Ball = _mainForm.Ball;
+                _mainForm.Paddle = new Paddle(_game.Scene);
+                _mainForm.Timer.Start();
+                _controlButton.Text = Resources.Pause;
+            }
         }
 
         public void OnTick(object sender, EventArgs e)
         {
-            UpdateScore();
+            UpdateScore(); 
             if (_game.IsOver)
             {
                 _gameOverLabel = new Label

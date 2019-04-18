@@ -120,6 +120,15 @@
   <data name="GameOver" xml:space="preserve">
     <value>Игра окончена</value>
   </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>Новая игра</value>
+  </data>
+  <data name="Pause" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
   <data name="ScoreLabelText" xml:space="preserve">
     <value>Счёт: {0}</value>
   </data>

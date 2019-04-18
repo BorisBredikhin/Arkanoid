@@ -70,6 +70,33 @@ namespace Arkanoid.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Новая игра.
+        /// </summary>
+        internal static string NewGame {
+            get {
+                return ResourceManager.GetString("NewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пауза.
+        /// </summary>
+        internal static string Pause {
+            get {
+                return ResourceManager.GetString("Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продолжить.
+        /// </summary>
+        internal static string Resume {
+            get {
+                return ResourceManager.GetString("Resume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Счёт: {0}.
         /// </summary>
         internal static string ScoreLabelText {

@@ -69,14 +69,14 @@ namespace Arkanoid.Model
            // var collisionDirection = new Direction(2*anotherGameObject.Position - Velocity);
             if (anotherGameObject is Brick)
             {
-                Velocity.X *= -1;
+                Velocity.Y *= -1;
                 if (Scene.InBounds(Position + Velocity) &&Scene[Position + Velocity] == null)
                     goto collision;
                 Velocity.X *= -1;
                 Velocity.Y *= -1;
                 if (Scene.InBounds(Position + Velocity) && Scene[Position + Velocity] == null)
                     goto collision;
-                Velocity.X *= -1;
+                Velocity.Y *= -1;
                 if (Scene.InBounds(Position + Velocity) && Scene[Position + Velocity] == null)
                     goto collision;
             }

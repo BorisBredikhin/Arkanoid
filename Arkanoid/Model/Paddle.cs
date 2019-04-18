@@ -7,7 +7,7 @@ namespace Arkanoid.Model
         public int Width { get => MySize.Width; set => MySize.Width = value; }
         public Paddle(Scene scene) : base(scene, new Vector(scene.SceneSize.Width / 2 - 1, scene.SceneSize.Height - 3))
         {
-            MySize = new Size(18,1);
+            MySize = new Size(20,1);
             Scene[Position] = null;
         }
 

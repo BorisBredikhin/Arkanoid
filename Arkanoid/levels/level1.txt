@@ -1,10 +1,10 @@
 ﻿5
 BBBBBBBBBBBBBBBBBBBBBB
-BSSS   SSS   SSS   SSB
-B SSS   SSS   SSS   SB
-B  SSS   SSS   SSS   B
-B                    B
-B                    B
+B   SSSSSSSSSSSSSS   B
+BSSSSSSSSSSSSSSSSSSS B
+B SSSSSS      SSSSSSSB
+BSSSSSS        SSSSSSB
+BSSSSS          SSSSSB
 B                    B
 B                    B
 B                    B
