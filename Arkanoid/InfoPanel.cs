@@ -50,7 +50,8 @@ namespace Arkanoid
                 _game.Scene = new Scene(_game,1);
                 _mainForm.Ball = new Ball(_game.Scene);
                 _game.Scene.Ball = _mainForm.Ball;
-                _mainForm.Paddle = new Paddle(_game.Scene);
+                _mainForm.Paddle = _game.Scene.Paddle;
+                _game.Scene.Paddle = _mainForm.Paddle;
                 _mainForm.Timer.Start();
                 _controlButton.Text = Resources.Pause;
             }
