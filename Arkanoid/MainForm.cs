@@ -25,6 +25,7 @@ namespace Arkanoid
 
         public MainForm()
         {
+            DoubleBuffered = true;
             InitializeComponent();
             _baseBrickBrush = new SolidBrush(Color.Green);
             _simpleBrickBrush = new SolidBrush(Color.Blue);
@@ -52,7 +53,7 @@ namespace Arkanoid
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            DrawGame();
+            DrawGame(e.Graphics);
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -72,9 +73,9 @@ namespace Arkanoid
             }
         }
 
-        private void DrawGame()
+        private void DrawGame(Graphics graphics)
         {
-            var graphics = CreateGraphics();
+            //var graphics = CreateGraphics();
             //graphics.Clear(Color.White);
             var areaSize = Game.GameAreaSize;
             var rectangles = new List<(RectType, Rectangle)>();
