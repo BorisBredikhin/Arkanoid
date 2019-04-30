@@ -47,7 +47,7 @@ namespace Arkanoid.Model
             {
                 for (var j = 0; j < SceneSize.Height; j++)
                 {
-                    _scene[i, j] = file[j+1][i] switch
+                    _scene[i, j] = file[j + 1][i] switch
 
                     {
                         'B' => new BaseBrick(this, new Vector(i, j)),

@@ -75,7 +75,7 @@ namespace Arkanoid
         private void DrawGame()
         {
             var graphics = CreateGraphics();
-            graphics.Clear(Color.White);
+            //graphics.Clear(Color.White);
             var areaSize = Game.GameAreaSize;
             var rectangles = new List<(RectType, Rectangle)>();
 
@@ -126,7 +126,8 @@ namespace Arkanoid
             Paddle.Collide();
             Ball.Move(null, Game.FPS);
 
-            DrawGame();
+            //DrawGame();
+            Invalidate();
         }
     }
 }
